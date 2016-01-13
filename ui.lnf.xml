@@ -1,8 +1,7 @@
 <application>
   <component name="UISettings">
     <option name="FONT_FACE" value="YuGothic" />
-    <option name="IDE_AA_TYPE" value="No antialiasing" />
-    <option name="EDITOR_AA_TYPE" value="No antialiasing" />
-    <option name="COLOR_BLINDNESS" value="deuteranopia" />
+    <option name="IDE_AA_TYPE" value="Greyscale" />
+    <option name="EDITOR_AA_TYPE" value="Greyscale" />
   </component>
 </application>
