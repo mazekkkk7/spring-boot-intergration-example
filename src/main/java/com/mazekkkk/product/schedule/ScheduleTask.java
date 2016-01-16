@@ -2,6 +2,7 @@ package com.mazekkkk.product.schedule;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
 import org.springframework.stereotype.Component;
@@ -15,14 +16,16 @@ import java.util.Date;
 @Component
 public class ScheduleTask extends ConcurrentTaskScheduler {
 
+    @Autowired
+    private SchedulerRunnable schedulerRunnable;
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public void schedulerGenerate(Date date){
         logger.info(sdf.format(date.getTime())+"----------------------------------------");
-        SchedulerRunnable task = new SchedulerRunnable();
-        super.schedule(task,date);
+        super.schedule(schedulerRunnable,date);
     }
 
     @Scheduled(fixedRate = 5000)
