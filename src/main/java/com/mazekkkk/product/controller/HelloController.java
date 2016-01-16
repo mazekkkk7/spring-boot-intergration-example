@@ -5,8 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
@@ -30,8 +32,9 @@ public class HelloController {
     }
 
     @RequestMapping("/generateTask")
-    public String generateTask() {
-        scheduleTask.schedulerGenerate();
+    public String generateTask(@RequestParam(name = "startDate",required = false) String date) throws ParseException {
+        logger.info("startSchedulerTask----------------------");
+        scheduleTask.schedulerGenerate(sdf.parse(date));
         return "build Spring boot Success!";
     }
 

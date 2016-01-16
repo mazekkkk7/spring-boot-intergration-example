@@ -3,6 +3,7 @@ package com.mazekkkk.product.schedule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -12,8 +13,10 @@ public class SchedulerRunnable implements Runnable {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
     @Override
     public void run() {
-        logger.info("runnable" + new Date());
+        logger.info("runnable" + sdf.format(new Date()));
     }
 }
