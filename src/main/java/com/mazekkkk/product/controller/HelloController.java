@@ -1,34 +1,40 @@
 package com.mazekkkk.product.controller;
 
+import com.mazekkkk.product.schedule.ScheduleTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by mazekkkk on 16/1/12.
  */
+
 @RestController
-@Component
+@RequestMapping("/index")
 public class HelloController {
+
+    @Autowired
+    private ScheduleTask scheduleTask;
 
     public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private  Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping("/")
-    public String index() {
+    @RequestMapping("/hello")
+    public String hello() {
         return "build Spring boot Success!";
     }
 
-    @Scheduled(fixedRate = 5000)
-    public void taskScheduled(){
-        logger.info(sdf.format(new Date()));
+    @RequestMapping("/generateTask")
+    public String generateTask() {
+        scheduleTask.schedulerGenerate();
+        return "build Spring boot Success!";
     }
+
+
 
 }

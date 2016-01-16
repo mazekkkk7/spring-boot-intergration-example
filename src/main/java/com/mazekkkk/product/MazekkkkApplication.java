@@ -10,6 +10,7 @@ public class MazekkkkApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MazekkkkApplication.class, args);
+
 	}
 
 }
