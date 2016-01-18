@@ -1,4 +1,4 @@
-package com.mazekkkk.product.schedule;
+package cn.mazekkkk.product.scheduler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

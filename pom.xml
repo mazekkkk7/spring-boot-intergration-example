@@ -6,7 +6,17 @@
 	<groupId>com.mazekkkk.product</groupId>
 	<artifactId>mazekkkk</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<modules>
+		<module>product-dao</module>
+		<module>product-scheduler</module>
+		<module>product-service</module>
+		<module>product-controller</module>
+		<module>product-config</module>
+		<module>product-common</module>
+		<module>product-webflow</module>
+		<module>product-activemq</module>
+	</modules>
+	<packaging>pom</packaging>
 
 	<name>mazekkkk</name>
 	<description>Demo project for Spring Boot</description>

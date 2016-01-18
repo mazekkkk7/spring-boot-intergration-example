@@ -1,6 +1,6 @@
-package com.mazekkkk.product.controller;
+package cn.mazekkkk.product.controller;
 
-import com.mazekkkk.product.schedule.ScheduleTask;
+import cn.mazekkkk.product.scheduler.ScheduleTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
