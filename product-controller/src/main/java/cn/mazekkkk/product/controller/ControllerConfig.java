@@ -1,10 +1,8 @@
 package cn.mazekkkk.product.controller;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping;
@@ -15,8 +13,7 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 /**
  * Created by mazekkkk on 16/1/18.
  */
-@EnableWebMvc
-@Configuration
+
 public class ControllerConfig extends WebMvcConfigurerAdapter{
 
     @Override
