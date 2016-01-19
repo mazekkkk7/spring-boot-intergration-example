@@ -1,5 +1,7 @@
-package cn.mazekkkk.product.scheduler;
+package cn.mazekkkk.product.scheduler.impl;
 
+import cn.mazekkkk.product.scheduler.ScheduleRunnableService;
+import cn.mazekkkk.product.scheduler.ScheduleTaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,10 @@ import java.util.Date;
  * Created by mazekkkk on 16/1/15.
  */
 @Component
-public class ScheduleTask extends ConcurrentTaskScheduler {
+public class ScheduleTaskImpl extends ConcurrentTaskScheduler implements ScheduleTaskService {
 
     @Autowired
-    private SchedulerRunnable schedulerRunnable;
+    private ScheduleRunnableService schedulerRunnable;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
