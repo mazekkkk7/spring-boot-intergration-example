@@ -2,7 +2,7 @@ package cn.mazekkkk.product.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -10,14 +10,14 @@ import java.util.Map;
 /**
  * Created by mazekkkk on 16/1/21.
  */
-@Component
+@Repository
 public class JdbcTemplateDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     /**
-     * 查询例子
+     * 获取所有地址
      * @return
      */
     public List<Map<String,Object>> selectAllAddress(){

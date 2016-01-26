@@ -1,7 +1,7 @@
 package cn.mazekkkk.product.controller;
 
-import cn.mazekkkk.product.dao.JdbcTemplateDao;
 import cn.mazekkkk.product.scheduler.ScheduleTaskService;
+import cn.mazekkkk.product.service.XncAddressService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class HelloController {
     private ScheduleTaskService scheduleTaskImpl;
 
     @Autowired
-    private JdbcTemplateDao jdbcTemplateDao;
+    private XncAddressService xncAddressService;
 
     public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -63,7 +63,7 @@ public class HelloController {
     @ResponseBody
     public Object getAllAddress(){
         logger.info("selectAllAddress-----------------------");
-        return jdbcTemplateDao.selectAllAddress();
+        return xncAddressService.getAllAddress();
     }
 
 
