@@ -5,3 +5,5 @@ init Spring boot
 增加调度任务模块
 
 模块化项目
+
+项目添加springJdbc 测试数据库通过拆分application.propertie文件product-dao模块下添加application-datasource.propertie,启动类添加主数据源@bean形式
