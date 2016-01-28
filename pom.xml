@@ -15,7 +15,6 @@
 		<module>product-common</module>
 		<module>product-webflow</module>
 		<module>product-activemq</module>
-		<module>product-module</module>
 		<module>product-plugin</module>
 	</modules>
 	<packaging>pom</packaging>

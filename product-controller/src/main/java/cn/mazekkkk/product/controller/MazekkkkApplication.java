@@ -3,18 +3,14 @@ package cn.mazekkkk.product.controller;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Primary;
 import org.springframework.scheduling.annotation.EnableScheduling;
-
-import javax.sql.DataSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-//@EnableWebMvc
+@EnableTransactionManagement
 @EnableScheduling
+//@EnableWebMvc
 //@EnableAutoConfiguration(exclude = DataSourceAutoConfiguration.class)
 @EnableAutoConfiguration
 @ComponentScan(basePackages = { "cn.mazekkkk.product" })
@@ -25,11 +21,6 @@ public class MazekkkkApplication {
 		app.run(args);
 	}
 
-	@Bean
-	@Primary
-	@ConfigurationProperties(prefix = "datasource.primary")
-	public DataSource primaryDataSource(){
-		return DataSourceBuilder.create().build();
-	}
+
 
 }
