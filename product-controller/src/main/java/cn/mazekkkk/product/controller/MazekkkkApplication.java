@@ -18,9 +18,8 @@ public class MazekkkkApplication {
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(MazekkkkApplication.class);
+		app.setShowBanner(false);
 		app.run(args);
 	}
-
-
 
 }
