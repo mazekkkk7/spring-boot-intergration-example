@@ -1,5 +1,7 @@
 package cn.mazekkkk.product.dao;
 
+import com.github.pagehelper.PageHelper;
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -18,6 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 /**
  * Created by mazekkkk on 16/1/28.
@@ -56,6 +59,18 @@ public class ModuleConfig implements EnvironmentAware,TransactionManagementConfi
         sessionFactoryBean.setDataSource(primaryDataSource());
         sessionFactoryBean.setTypeAliasesPackage(propertyResolver.getProperty("typeAliasesPackage"));
         sessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(propertyResolver.getProperty("mapperLocations")));
+
+//        mybatis分页插件
+        PageHelper pageHelper = new PageHelper();
+        Properties properties = new Properties();
+        properties.setProperty("reasonable", "true");
+        properties.setProperty("supportMethodsArguments", "true");
+        properties.setProperty("returnPageInfo", "check");
+        properties.setProperty("params", "count=countSql");
+        pageHelper.setProperties(properties);
+//        添加插件
+        sessionFactoryBean.setPlugins(new Interceptor[]{pageHelper});
+
         return sessionFactoryBean.getObject();
     }
 
