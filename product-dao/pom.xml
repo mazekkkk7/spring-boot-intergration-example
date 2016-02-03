@@ -38,6 +38,13 @@
             <artifactId>commons-dbcp2</artifactId>
             <version>2.1.1</version>
         </dependency>
+        <!-- mybatis 插件 start -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <!-- mybatis 插件 end -->
     </dependencies>
 
 

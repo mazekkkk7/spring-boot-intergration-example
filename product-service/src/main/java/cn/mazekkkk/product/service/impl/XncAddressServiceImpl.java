@@ -11,7 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by mazekkkk on 16/1/26.
  */
 @Service("xncAddressService")
-@Transactional("txName")
+//@Transactional("txName")
+@Transactional
 public class XncAddressServiceImpl implements XncAddressService {
 
     @Autowired

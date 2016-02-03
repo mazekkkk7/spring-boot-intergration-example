@@ -13,7 +13,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 import javax.sql.DataSource;
 
@@ -23,7 +25,7 @@ import javax.sql.DataSource;
 @Configuration
 @MapperScan("cn.mazekkkk.product.dao.mapper")
 @EnableTransactionManagement
-public class ModuleConfig implements EnvironmentAware {
+public class ModuleConfig implements EnvironmentAware,TransactionManagementConfigurer {
 
     private RelaxedPropertyResolver propertyResolver;
 
@@ -44,15 +46,6 @@ public class ModuleConfig implements EnvironmentAware {
     }
 
     /**
-     * 数据源托管事务管理器
-     * @return
-     */
-    @Bean(name="txName")
-    public DataSourceTransactionManager dataSourceTransactionManager(){
-        return new DataSourceTransactionManager(primaryDataSource());
-    }
-
-    /**
      * Sqlsession管理数据源
      * @return
      * @throws Exception
@@ -66,4 +59,13 @@ public class ModuleConfig implements EnvironmentAware {
         return sessionFactoryBean.getObject();
     }
 
+    /**
+     * 数据源管理
+     * @return
+     */
+    @Bean
+    @Override
+    public PlatformTransactionManager annotationDrivenTransactionManager() {
+        return new DataSourceTransactionManager(primaryDataSource());
+    }
 }
