@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
@@ -21,6 +22,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @MapperScan("cn.mazekkkk.product.dao.mapper")
+@EnableTransactionManagement
 public class ModuleConfig implements EnvironmentAware {
 
     private RelaxedPropertyResolver propertyResolver;

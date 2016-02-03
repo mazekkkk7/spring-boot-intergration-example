@@ -32,6 +32,11 @@
             <artifactId>product-scheduler</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>cn.mazekkkk.product</groupId>
+            <artifactId>product-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <!-- 依赖模块end -->
         <!-- spring boot start -->
         <dependency>

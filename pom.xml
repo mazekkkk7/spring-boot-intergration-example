@@ -16,6 +16,7 @@
 		<module>product-webflow</module>
 		<module>product-activemq</module>
 		<module>product-plugin</module>
+		<module>product-security</module>
 	</modules>
 	<packaging>pom</packaging>
 

@@ -1,14 +1,11 @@
 package cn.mazekkkk.product.service.impl;
 
-import cn.mazekkkk.product.dao.JdbcTemplateDao;
+import cn.mazekkkk.product.common.XncAddressExample;
 import cn.mazekkkk.product.dao.mapper.XncAddressMapper;
 import cn.mazekkkk.product.service.XncAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by mazekkkk on 16/1/26.
@@ -18,9 +15,6 @@ import java.util.Map;
 public class XncAddressServiceImpl implements XncAddressService {
 
     @Autowired
-    private JdbcTemplateDao jdbcTemplateDao;
-
-    @Autowired
     private XncAddressMapper xncAddressMapper;
 
     /**
@@ -28,9 +22,9 @@ public class XncAddressServiceImpl implements XncAddressService {
      * @return
      */
     @Override
-    public List<Map<String, Object>> getAllAddress() {
-//        return jdbcTemplateDao.selectAllAddress();
-        return xncAddressMapper.selectXncAddress();
+    public Object getAllAddress() {
+        XncAddressExample xncAddressExample = new XncAddressExample();
+        return xncAddressMapper.selectByExample(xncAddressExample);
     }
 
 

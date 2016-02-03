@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="application-datasource.properties"></properties>
+
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <!-- 数据库配置 start -->
+        <jdbcConnection driverClass="${datasource.primary.driver-class-name}"
+                        connectionURL="${datasource.primary.url}"
+                        userId="${datasource.primary.username}"
+                        password="${datasource.primary.password}">
+        </jdbcConnection>
+        <!-- 数据库配置 end -->
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+
+        <!--生成java模型 start-->
+        <javaModelGenerator targetPackage="${mybatis.generator.model.package}"
+                            targetProject="${mybatis.generator.project.path}/${mybatis.generator.model.module}/src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!--生成java模型 end-->
+
+        <!--生成sql配置 start-->
+        <sqlMapGenerator targetPackage="${mybatis.generator.mapper.sql}"
+                         targetProject="${mybatis.generator.project.path}/${mybatis.generator.mapper.module}/src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!--生成sql配置 end-->
+
+        <!--生成mappper start-->
+        <javaClientGenerator targetPackage="${mybatis.generator.mapper.package}"
+                             targetProject="${mybatis.generator.project.path}/${mybatis.generator.mapper.module}/src/main/java"
+                             type="XMLMAPPER">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!--生成mapper end-->
+
+        <!--生成表start   -->
+        <!--domainObjectName指定表名生成的实体类-->
+        <table tableName="xnc_address" schema="">
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <!--生成表end-->
+
+    </context>
+</generatorConfiguration>
