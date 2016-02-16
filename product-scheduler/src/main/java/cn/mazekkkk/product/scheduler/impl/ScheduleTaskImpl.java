@@ -5,7 +5,6 @@ import cn.mazekkkk.product.scheduler.ScheduleTaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +29,7 @@ public class ScheduleTaskImpl extends ConcurrentTaskScheduler implements Schedul
         super.schedule(schedulerRunnable,date);
     }
 
-    @Scheduled(fixedRate = 5000)
+//    @Scheduled(fixedRate = 5000)
     public void taskScheduled(){
         logger.info(sdf.format(new Date()));
     }

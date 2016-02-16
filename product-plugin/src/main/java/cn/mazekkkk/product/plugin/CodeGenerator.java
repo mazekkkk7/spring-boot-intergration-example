@@ -13,7 +13,7 @@ import java.util.List;
  * Created by mazekkkk on 16/1/28.
  */
 
-public class DaoGenerator {
+public class CodeGenerator {
 
     public static void main(String[] args)throws Exception{
         List<String> warnings = new ArrayList<String>();

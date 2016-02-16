@@ -43,6 +43,12 @@
         </javaClientGenerator>
         <!--生成mapper end-->
 
+        <!-- 生成service start -->
+        <!--<javaServiceGenerator targetPackage="${mybatis.generator.service.package}"-->
+                              <!--targetProject="${mybatis.generator.project.path}/${mybatis.generator.service.module}/src/main/java">-->
+        <!--</javaServiceGenerator>-->
+        <!-- 生成service end -->
+
         <!--生成表start   -->
         <!--domainObjectName指定表名生成的实体类-->
         <table tableName="xnc_address" schema="">
