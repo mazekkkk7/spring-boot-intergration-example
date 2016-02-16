@@ -79,6 +79,4 @@ public class HelloController {
         return "greeting";
     }
 
-
-
 }
