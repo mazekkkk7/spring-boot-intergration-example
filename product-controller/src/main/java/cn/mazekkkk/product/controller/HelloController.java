@@ -67,6 +67,12 @@ public class HelloController {
         return xncAddressService.getAllAddress();
     }
 
+    /**
+     * thymeleaf 推送html数据
+     * @param name 参数名称
+     * @param model 视图模型
+     * @return
+     */
     @RequestMapping("/greetingView")
     public String greeting(@RequestParam(value = "name", required = false,defaultValue = "world") String name, Model model){
         model.addAttribute("name",name);
