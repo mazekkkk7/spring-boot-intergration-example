@@ -1,4 +1,4 @@
-package cn.mazekkkk.product.dao;
+package cn.mazekkkk.product.dao.config;
 
 import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.plugin.Interceptor;

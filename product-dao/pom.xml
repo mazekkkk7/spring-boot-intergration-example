@@ -10,6 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>product-dao</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>product-dao-common</module>
+        <module>product-dao-mapper</module>
+        <module>product-dao-config</module>
+    </modules>
 
     <dependencies>
 

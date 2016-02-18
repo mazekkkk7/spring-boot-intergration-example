@@ -1,7 +1,7 @@
 package cn.mazekkkk.product.service.impl;
 
-import cn.mazekkkk.product.common.XncAddress;
-import cn.mazekkkk.product.common.XncAddressExample;
+import cn.mazekkkk.product.dao.common.XncAddress;
+import cn.mazekkkk.product.dao.common.XncAddressExample;
 import cn.mazekkkk.product.dao.mapper.XncAddressMapper;
 import cn.mazekkkk.product.service.XncAddressService;
 import com.github.pagehelper.PageHelper;
