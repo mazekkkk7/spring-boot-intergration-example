@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.mazekkkk.product.dao.mapper.user.CustomUserAddressMapper">
+    
+    <resultMap id="BaseResultMap" type="cn.mazekkkk.product.common.vo.UserAddressVo">
+        <id column="name" property="linkName" jdbcType="OTHER"/>
+        <result column="phone" property="linkPhone" jdbcType="OTHER"/>
+        <result column="email" property="linkEmail" jdbcType="OTHER"/>
+        <result column="telphone" property="linkTel" jdbcType="OTHER"/>
+        <result column="street" property="linkStreet" jdbcType="OTHER"/>
+        <result column="community" property="community" jdbcType="OTHER"/>
+        <result column="country" property="country" jdbcType="OTHER"/>
+        <result column="province" property="province" jdbcType="OTHER"/>
+        <result column="city" property="city" jdbcType="OTHER"/>
+        <result column="district" property="district" jdbcType="OTHER"/>
+        <result column="post_code" property="postCode" jdbcType="OTHER"/>
+        <result column="is_default" property="defaulted" jdbcType="OTHER"/>
+    </resultMap>
+    <select id="getUserAddressList" parameterType="cn.mazekkkk.product.common.vo.UserAddressVo" resultMap="BaseResultMap">
+         select c.name as linkName,c.phone as linkPhone ,c.email as linkEmail,c.telphone as linkTel,
+            d.street as linkStreet,d.community,d.country,d.province,d.city,d.district,
+                d.post_code as postCode,a.is_default as defaulted
+         from user_addresses a left join  user_contacts b on a.user_id= b.user_id left join common_contact c
+         on b.contact_id=c.id left join common_address d on d.id = a.addr_id
+         where a.type=3 and b.type=3 and c.`status`=1 
+		<if test="userId != null">
+		       and  a.user_id = #{userId}
+		</if>
+        order by a.add_time desc
+    </select>
+    
+    
+     <select id="selectUserAddress" parameterType="cn.mazekkkk.product.common.vo.UserAddressVo" resultType="java.util.Map">
+       SELECT b.id,a.id AS addrId,a.country,a.province,a.city,a.district,a.street,a.community,a.post_code
+            from  user_addresses b LEFT JOIN common_address a on a.id = b.addr_id
+        WHERE 1=1 
+		<if test="userId != null">
+		       and  b.user_id = #{userId}
+		</if>
+		<if test="type != null">
+		       and  b.type = #{type}
+		</if>
+		<if test="defaulted != null">
+		       and  b.is_default = #{defaulted}
+		</if>
+        order by b.add_time desc
+    </select>
+    
+    
+</mapper>

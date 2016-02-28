@@ -15,7 +15,7 @@
         </jdbcConnection>
         <!-- 数据库配置 end -->
 
-        <javaTypeResolver >
+        <javaTypeResolver type="cn.mazekkkk.product.plugin.util.MyJavaTypeResolver" >
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
@@ -51,8 +51,477 @@
 
         <!--生成表start   -->
         <!--domainObjectName指定表名生成的实体类-->
-        <table tableName="xnc_address" schema="">
-            <property name="rootClass" value="cn.mazekkkk.product.common.BaseEntity"></property>
+        <table schema="" tableName="auction_buy_ticket">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="auction_collection">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="auction_comment">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="auction_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="auction_outprice_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="auction_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="auction_statis">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <!-- common模块 start -->
+
+        <table schema="" tableName="common_address">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="common_article">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="common_comment">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="common_contact">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="common_imgs">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="common_list_value">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <table schema="" tableName="common_message">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="common_metemplate">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="common_region">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="common_statis">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <!--&lt;!&ndash; 产 品模块 begin &ndash;&gt;-->
+
+        <!-- common模块 end -->
+
+
+        <table schema="" tableName="logistics_company">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="logistics_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+
+        <table schema="" tableName="machine_error_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="machine_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="machine_loss_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="machine_rfid_loss_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="machine_rfid_shelve_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="machine_road_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="machine_road_inventory">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="machine_sale_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="machine_shelve_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="machine_wechat_param">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="pay_alipay_account">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="pay_alipay_create_order">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="pay_alipay_pay_notify">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="pay_wechat_enterprise_payment_req">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="pay_wechat_enterprise_payment_res">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="pay_wechat_module">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="pay_wechat_notify">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <table schema="" tableName="pay_wechat_unified_order_req">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <table schema="" tableName="pay_wechat_unified_order_res">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <table schema="" tableName="platform_activity">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="platform_coupon">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="platform_customer">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="platform_inventory_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="platform_machines_coupons">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+
+        <!-- 产品模块 begin -->
+        <table schema="" tableName="product_area">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="product_cate_property">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="product_category">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="product_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="product_prop_value">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="product_property">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="product_vender">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="products_categorys">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <!-- 产品模块 end -->
+
+        <table schema="" tableName="rfid_tag_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="rfid_tag_relation">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <table schema="" tableName="shop_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="shop_prod_onshelf">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="shop_prod_onshelf_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="shop_sku_onshelf">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="shop_sku_onshelf_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sku_allotment_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sku_allotmentt_detail">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <table schema="" tableName="sku_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sku_inventory">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sku_kit_detail">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sku_prop_value">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sku_stock_inout_detail">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sku_stock_inout_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+
+        <table schema="" tableName="subaccount_allot_plan">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="subaccount_allot_strategy">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="subaccount_benefit_user_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="subaccount_platform_allot_rel">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="subaccount_transfer_detail">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="subaccount_transfer_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <table schema="" tableName="sys_dict">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sys_log">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sys_mdict">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sys_menu">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sys_office">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sys_role">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sys_role_menu">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sys_role_office">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sys_user">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="sys_user_role">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <table schema="" tableName="trade_exchange_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="trade_order_coupons">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="trade_order_detail">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="trade_order_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="trade_order_shipto">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="trade_order_status">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="trade_pay_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="trade_record">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <table schema="" tableName="user_actions">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="user_addresses">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="user_base_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="user_collection">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="user_contacts">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="user_credit">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <table schema="" tableName="user_detail_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <table schema="" tableName="user_qq_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="user_shopping_cart">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="user_wechat_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="user_weibo_info">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="users_coupons">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+
+        <table schema="" tableName="wechat_account">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="wechat_auto_response">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="wechat_menu">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="wechat_news_item">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="wechat_newstemplate">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="wechat_receivetext">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="wechat_subscribe">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="wechat_text_template">
+
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+        </table>
+        <table schema="" tableName="wechat_user">
+
             <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
         </table>
         <!--生成表end-->

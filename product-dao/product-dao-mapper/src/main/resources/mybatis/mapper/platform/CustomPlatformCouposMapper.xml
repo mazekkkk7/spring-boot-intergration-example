@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.mazekkkk.product.dao.mapper.platform.CustomPlatformCouposMapper">
+    
+    <resultMap id="BaseResultMap" type="cn.mazekkkk.product.common.vo.PlatformCouponVo">
+        <id column="id" property="id" jdbcType="OTHER"/>
+        <result column="pc_id" property="pcId" jdbcType="OTHER"/>
+        <result column="code" property="code" jdbcType="OTHER"/>
+        <result column="activity_id" property="activityId" jdbcType="OTHER"/>
+        <result column="valid_begin_time" property="validBeginTime" jdbcType="OTHER"/>
+        <result column="valid_end_time" property="validEndTime" jdbcType="OTHER"/>
+        <result column="valid_time" property="validTime" jdbcType="OTHER"/>
+    </resultMap>
+    <select id="getCoupons" parameterType="cn.mazekkkk.product.common.vo.PlatformCouponVo" resultMap="BaseResultMap">
+       SELECT b.activity_id,b.`code`,b.id,b.valid_begin_time,b.valid_end_time,b.valid_time  
+           FROM platform_activity a LEFT JOIN platform_coupon b
+	      ON a.id = b.activity_id WHERE SYSDATE() BETWEEN a.begin_time  AND a.end_time
+	      AND a.`status`=1 AND  SYSDATE() BETWEEN b.valid_begin_time AND b.valid_end_time
+	      AND b.co_status=1 AND b.`status`=1 AND a.pc_id = b.pc_id AND b.discount_type = 5
+	      <if test="couponType != null">
+		      AND a.type= #{couponType}
+		  </if>
+		  <if test="pcId != null">
+		       AND a.pc_id= #{pcId}
+		  </if>
+    </select>
+    
+        
+    <select id="selectUserCoupons" parameterType="cn.mazekkkk.product.common.vo.PlatformCouponVo" resultType="java.util.Map">
+             SELECT a.`name`,a.description,b.id AS couponsId,b.`name` AS couponsName,
+				b.pc_id AS pcId,b.discription AS couponDisc,b.`code` AS counponsCode,b.valid_begin_time AS beginTime,
+				b.valid_end_time AS endTime,b.disc_perc AS orderDisc,b.disc_amount AS discAmount,b.enough_price,b.reduce_price,b.co_type,b.enough_count, b.reduce_count,b.discount_type,b.valid_time AS validTime
+				 FROM platform_activity a LEFT JOIN
+				platform_coupon b ON a.id = b.activity_id 
+				WHERE 1=1 AND a.`status`=1 AND b.co_status=1 AND ( SYSDATE() BETWEEN b.valid_begin_time AND b.valid_end_time)
+    
+			<if test="id != null">
+		       and  b.id = #{id}
+		    </if>
+		    <if test="activityId != null">
+		       and  a.id = #{activityId}
+		    </if>
+		    <if test="pcId != null">
+		       and  b.pc_id = #{pcId}
+		    </if>
+		    <if test="type != null">
+		       and  a.type = #{type}
+		    </if>
+			ORDER BY b.add_time ASC  
+    </select>
+    
+    <select id="selectMachineCoupons" parameterType="cn.mazekkkk.product.common.vo.PlatformCouponVo" resultType="java.util.Map">
+         SELECT a.machine_id,b.id,b.pc_id,b.activity_id,b.`name`,
+		b.discription,b.CODE,b.co_status,b.`status`,b.valid_begin_time,b.valid_end_time,b.u_version,b.disc_perc,
+		b.disc_amount,b.valid_time,b.add_time,b.enough_price,b.reduce_price,b.co_type,b.enough_count, b.reduce_count,b.discount_type
+FROM platform_machines_coupons a
+  LEFT JOIN platform_coupon b
+    ON a.co_id = b.id
+WHERE ( SYSDATE() BETWEEN a.start_time AND a.end_time)
+    AND a.pc_id = b.pc_id
+    AND a.status = 1
+    AND b.status = 1
+    AND b.co_status = 1
+    AND b.co_type=3
+     <if test="pcId != null">
+        and  a.pc_id = #{pcId}
+    </if>
+    <if test="machineId != null">
+       and a.machine_id = #{machineId}
+    </if>
+    </select>
+</mapper>

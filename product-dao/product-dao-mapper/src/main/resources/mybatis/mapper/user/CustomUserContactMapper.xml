@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.mazekkkk.product.dao.mapper.user.CustomUserContactMapper">
+    
+    <resultMap id="BaseResultMap" type="cn.mazekkkk.product.common.vo.UserContactVo">
+        <id column="id" property="id" jdbcType="OTHER"/>
+        <result column="contactId" property="contactId" jdbcType="OTHER"/>
+        <result column="name" property="name" jdbcType="OTHER"/>
+        <result column="phone" property="phone" jdbcType="OTHER"/>
+        <result column="email" property="email" jdbcType="OTHER"/>
+        <result column="telphone" property="telphone" jdbcType="OTHER"/>
+        <result column="status" property="status" jdbcType="OTHER"/>
+    </resultMap>
+     <select id="selectUserContact" parameterType="cn.mazekkkk.product.common.vo.UserContactVo" resultMap="BaseResultMap">
+         SELECT a.id,b.id as contactId,b.`name`,b.phone,b.email,b.telphone,b.`status` FROM user_contacts a LEFT JOIN common_contact b 
+           ON a.contact_id = b.id WHERE 1=1 
+			<if test="userId != null">
+			       and  a.user_id = #{userId}
+			</if>
+			<if test="type != null">
+			       and  a.type = #{type}
+			</if>
+			<if test="defaulted != null">
+			       and   a.is_default= #{defaulted}
+			</if>
+    </select>
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="cn.mazekkkk.product.dao.mapper.user.CustomUsersCouponsMapper">
+
+	<resultMap id="BaseResultMap"
+		type="cn.mazekkkk.product.common.vo.UserCouponsVo">
+		<id column="user_id" property="userId" jdbcType="OTHER" />
+		<result column="co_id" property="couponsId" jdbcType="OTHER" />
+		<result column="name" property="couponsName" jdbcType="OTHER" />
+		<result column="code" property="counponsCode" jdbcType="OTHER" />
+		<result column="disc_perc" property="orderDisc" jdbcType="OTHER" />
+		<result column="disc_amount" property="discAmount" jdbcType="OTHER" />
+	</resultMap>
+	<select id="getUserCouponsList" parameterType="cn.mazekkkk.product.common.vo.UserCouponsVo"
+		resultMap="BaseResultMap">
+
+		select a.user_id as userId,a.co_id as couponsId,b.name as
+		couponsName,b.`code` as counponsCode,b.disc_perc as
+		orderDisc,b.disc_amount as discAmount
+		from users_coupons a
+		left join platform_coupon b
+		on a.co_id =b.id
+		where a.`status`=1 and ( SYSDATE() BETWEEN a.start_time and a.end_time)
+		AND a.use_time IS NULL
+		and a.order_id is null
+		<if test="userId != null">
+			and a.user_id = #{userId}
+		</if>
+		order by a.add_time
+	</select>
+
+	<select id="getCouponsByUser"  parameterType="cn.mazekkkk.product.common.vo.UserCouponsVo" resultType="java.util.Map">
+		SELECT a.co_id,a.id AS uc_id,a.user_id,a.u_version,b.pc_id,b.activity_id,b.NAME,
+		b.discription,b.CODE,b.co_status,b.STATUS,b.valid_begin_time,b.valid_end_time,b.disc_perc,
+		b.disc_amount,b.valid_time,b.add_time,b.enough_price,b.reduce_price,b.co_type,b.enough_count, b.reduce_count,b.discount_type
+		FROM users_coupons a
+		LEFT JOIN platform_coupon b
+		ON a.co_id = b.id
+		WHERE a.`status` = 1
+		AND b.co_status = 1
+		AND b.status = 1
+		AND (SYSDATE() BETWEEN a.start_time AND a.end_time)
+		AND a.use_time IS NULL
+		AND a.order_id IS NULL
+		<if test="userId != null">
+			and a.user_id = #{userId}
+		</if>
+		<if test="pcId != null">
+			and b.pc_id= #{pcId}
+		</if>
+		<if test="type != null">
+			AND b.discount_type = #{type}
+		</if>
+		<if test="machineId != null">
+	      AND a.co_id NOT IN(SELECT pmc.co_id FROM platform_machines_coupons pmc WHERE 1=1 AND  pmc.machine_id != #{machineId})
+	    </if>
+		ORDER BY a.end_time
+	</select>
+</mapper>
