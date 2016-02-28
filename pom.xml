@@ -17,6 +17,7 @@
 		<module>product-activemq</module>
 		<module>product-plugin</module>
 		<module>product-security</module>
+		<module>product-search</module>
 	</modules>
 	<packaging>pom</packaging>
 
