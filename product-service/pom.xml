@@ -19,17 +19,7 @@
         </dependency>
         <dependency>
             <groupId>cn.mazekkkk.product</groupId>
-            <artifactId>product-dao-mapper</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.mazekkkk.product</groupId>
-            <artifactId>product-dao-config</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.mazekkkk.product</groupId>
-            <artifactId>product-dao-common</artifactId>
+            <artifactId>product-dao</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
