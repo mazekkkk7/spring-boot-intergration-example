@@ -5,6 +5,7 @@ import cn.mazekkkk.product.common.enums.BaseResult;
 import cn.mazekkkk.product.dao.common.SUser;
 import cn.mazekkkk.product.dao.common.SUserExample;
 import cn.mazekkkk.product.dao.mapper.SUserMapper;
+import cn.mazekkkk.product.service.SUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +15,8 @@ import java.util.Map;
 /**
  * Created by mazekkkk on 16/6/21.
  */
-@Service("suserService")
-public class sUserServiceImpl {
+@Service("sUserService")
+public class SUserServiceImpl implements SUserService {
 
     @Autowired
     private SUserMapper sUserMapper;
@@ -28,6 +29,7 @@ public class sUserServiceImpl {
 
     private Object data;
 
+    @Override
     public Map<String,Object> findAll() {
 
         data = sUserMapper.selectByExample(new SUserExample());
@@ -37,6 +39,7 @@ public class sUserServiceImpl {
 
     }
 
+    @Override
     public Map<String,Object> create(SUser user) {
 
         data = sUserMapper.insert(new SUser());
@@ -46,6 +49,7 @@ public class sUserServiceImpl {
 
     }
 
+    @Override
     public Map<String,Object> findUserById(Integer id) {
 
         data = sUserMapper.selectByPrimaryKey(id);
@@ -55,6 +59,7 @@ public class sUserServiceImpl {
 
     }
 
+    @Override
     public Map<String,Object> login(String email, String password) {
 
         SUserExample sUserExample = new SUserExample();
@@ -72,6 +77,7 @@ public class sUserServiceImpl {
         return baseResultMap.getResultMap();
     }
 
+    @Override
     public Map<String,Object> update(SUser user) {
 
         Integer row = sUserMapper.updateByPrimaryKey(user);
@@ -88,6 +94,7 @@ public class sUserServiceImpl {
         return baseResultMap.getResultMap();
     }
 
+    @Override
     public Map<String,Object> deleteUser(Integer id) {
 
         Integer row = sUserMapper.deleteByPrimaryKey(id);
@@ -104,6 +111,7 @@ public class sUserServiceImpl {
         return baseResultMap.getResultMap();
     }
 
+    @Override
     public Map<String,Object> findUserByEmail(String email) {
 
         SUserExample sUserExample = new SUserExample();

@@ -51,10 +51,17 @@
 
         <!--生成表start   -->
         <!--domainObjectName指定表名生成的实体类-->
-        <table schema="" tableName="s_user">
+
+        <!--<table schema="" tableName="s_user">-->
+
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <table schema="" tableName="s_role">
 
             <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
         </table>
+
         <!--生成表end-->
     </context>
 </generatorConfiguration>
