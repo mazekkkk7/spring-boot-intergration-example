@@ -1,6 +1,5 @@
 package cn.mazekkkk.product.dao.common;
 
-import cn.mazekkkk.product.common.BaseEntity;
 import java.util.Date;
 
 public class XncAddress extends BaseEntity {
