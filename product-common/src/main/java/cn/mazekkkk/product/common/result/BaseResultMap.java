@@ -1,4 +1,4 @@
-package cn.mazekkkk.product.common;
+package cn.mazekkkk.product.common.result;
 
 import java.util.HashMap;
 import java.util.Map;

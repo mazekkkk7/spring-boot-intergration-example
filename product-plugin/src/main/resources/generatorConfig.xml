@@ -57,7 +57,12 @@
             <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
         <!--</table>-->
 
-        <table schema="" tableName="s_role">
+        <!--<table schema="" tableName="s_role">-->
+
+            <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <table schema="" tableName="xnc_address">
 
             <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
         </table>

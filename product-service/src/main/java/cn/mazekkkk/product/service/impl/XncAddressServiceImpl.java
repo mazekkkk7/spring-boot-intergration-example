@@ -28,7 +28,7 @@ public class XncAddressServiceImpl implements XncAddressService {
         XncAddress xncAddress = new XncAddress();
         XncAddressExample xncAddressExample = new XncAddressExample();
 
-        PageHelper.startPage(xncAddress.getPage(),xncAddress.getRows(),"id");
+        PageHelper.startPage(1,10,"id");
         return xncAddressMapper.selectByExample(xncAddressExample);
     }
 

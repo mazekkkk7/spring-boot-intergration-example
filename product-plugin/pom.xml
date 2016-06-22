@@ -23,16 +23,6 @@
             <artifactId>product-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>cn.mazekkkk.product</groupId>
-            <artifactId>product-dao-mapper</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.mazekkkk.product</groupId>
-            <artifactId>product-dao-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
         <!-- 模块依赖 end-->
         <dependency>
             <groupId>junit</groupId>
