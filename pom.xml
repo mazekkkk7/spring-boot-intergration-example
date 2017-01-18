@@ -11,13 +11,11 @@
 		<module>product-scheduler</module>
 		<module>product-service</module>
 		<module>product-controller</module>
-		<module>product-config</module>
 		<module>product-common</module>
-		<module>product-webflow</module>
 		<module>product-activemq</module>
 		<module>product-plugin</module>
 		<module>product-security</module>
-		<module>product-search</module>
+		<module>product-redis</module>
 	</modules>
 	<packaging>pom</packaging>
 
@@ -28,7 +26,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.2.0.RELEASE</version>
+		<version>1.4.0.RELEASE</version>
 	</parent>
 
 

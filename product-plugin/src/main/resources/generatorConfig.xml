@@ -62,7 +62,7 @@
             <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
         <!--</table>-->
 
-        <table schema="" tableName="xnc_address">
+        <table schema="" tableName="gametrade">
 
             <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
         </table>
