@@ -47,6 +47,11 @@
             <artifactId>product-activemq</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>cn.mazekkkk.product</groupId>
+            <artifactId>product-redis</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <!-- 依赖模块end -->
     </dependencies>
 

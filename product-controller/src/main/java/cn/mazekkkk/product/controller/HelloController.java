@@ -1,5 +1,6 @@
 package cn.mazekkkk.product.controller;
 
+import cn.mazekkkk.product.redis.service.IRedisService;
 import cn.mazekkkk.product.scheduler.ScheduleTaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,8 @@ public class HelloController {
 
     @Autowired
     private ScheduleTaskService scheduleTaskImpl;
+    @Autowired
+    private IRedisService redisService;
 
     public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -62,6 +65,20 @@ public class HelloController {
     public String greeting(@RequestParam(value = "name", required = false,defaultValue = "world") String name, Model model){
         model.addAttribute("name",name);
         return "greeting";
+    }
+
+    @RequestMapping("/redis/set")
+    @ResponseBody
+    public Object redisSet(@RequestParam("value")String value){
+        redisService.set("name", value);
+        return value;
+    }
+
+    @RequestMapping("/redis/get")
+    @ResponseBody
+    public Object redisGet(){
+        String name = redisService.get("name");
+        return name;
     }
 
 }
