@@ -18,6 +18,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
+import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -82,5 +83,20 @@ public class ModuleConfig implements EnvironmentAware,TransactionManagementConfi
     @Override
     public PlatformTransactionManager annotationDrivenTransactionManager() {
         return new DataSourceTransactionManager(primaryDataSource());
+    }
+
+    /**
+     * Mybatis通用Mapper配置
+     * @return
+     */
+    @Bean
+    public MapperScannerConfigurer mapperScannerConfigurer(){
+        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
+        Properties propertiesMapper = new Properties();
+        propertiesMapper.setProperty("mappers","tk.mybatis.mapper.common.Mapper");
+        propertiesMapper.setProperty("IDENTITY","SELECT REPLACE(UUID(),'-','')");
+        propertiesMapper.setProperty("ORDER","BEFORE");
+        mapperScannerConfigurer.setProperties(propertiesMapper);
+        return mapperScannerConfigurer;
     }
 }

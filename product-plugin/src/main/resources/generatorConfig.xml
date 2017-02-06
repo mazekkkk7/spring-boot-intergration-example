@@ -6,7 +6,18 @@
 <generatorConfiguration>
     <properties resource="application-datasource.properties"></properties>
 
-    <context id="MysqlTables" targetRuntime="MyBatis3">
+    <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!-- simple模式没有Example -->
+    <!--<context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">-->
+
+        <!-- 配置通用Mapper的生成类 start -->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <!-- 设置Mysql忽略大小写 -->
+            <property name="caseSensitive" value="true"/>
+        </plugin>
+        <!-- 配置通用Mapper的生成类 end -->
+
         <!-- 数据库配置 start -->
         <jdbcConnection driverClass="${datasource.primary.driver-class-name}"
                         connectionURL="${datasource.primary.url}"
@@ -64,7 +75,7 @@
 
         <table schema="" tableName="gametrade">
 
-            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"></generatedKey>
         </table>
 
         <!--生成表end-->
