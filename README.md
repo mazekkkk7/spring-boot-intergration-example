@@ -1,6 +1,6 @@
-# springBoot
-使用SpringBoot快速构建项目，需要将现有的框架结合到SpringBoot中，大家可以在idea中编辑vcs使用git然后再idea中提交代码。
-增加调度任务模块
-模块化项目
-项目添加springJdbc 测试数据库通过拆分application.propertie文件product-dao模块下添加application-datasource.propertie,启动类添加主数据源@bean形式
-添加Mq模块、添加Redis模块、改造MybatisGenerator配合FreeMaker生成业务代码、集成通用mapper和PageHelper
+# SpringBoot
+使用SpringBoot快速构建项目:  
+1、使用Maven构建项目  
+2、集成RedisDemo  
+3、集成ActiveMqDemo  
+4、集成Mybatis的通用Mapper和PageHelper插件
