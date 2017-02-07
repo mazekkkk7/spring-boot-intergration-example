@@ -5,7 +5,8 @@ import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.EnvironmentAware;
@@ -27,15 +28,18 @@ import java.util.Properties;
  * Created by mazekkkk on 16/1/28.
  */
 @Configuration
+@EnableAutoConfiguration
 @MapperScan("cn.mazekkkk.product.dao.mapper")
 @EnableTransactionManagement
 public class ModuleConfig implements EnvironmentAware,TransactionManagementConfigurer {
 
     private RelaxedPropertyResolver propertyResolver;
+    private RelaxedPropertyResolver jdbcPropertyResolver;
 
     @Override
     public void setEnvironment(Environment environment) {
         this.propertyResolver = new RelaxedPropertyResolver(environment,"mybatis.");
+        this.jdbcPropertyResolver = new RelaxedPropertyResolver(environment,"datasource.primary.");
     }
 
     /**
@@ -45,8 +49,23 @@ public class ModuleConfig implements EnvironmentAware,TransactionManagementConfi
     @Bean
     @Primary
     @ConfigurationProperties(prefix = "datasource.primary")
+    public DataSourceProperties primaryDataSourceProperties(){
+        DataSourceProperties dataSourceProperties = new DataSourceProperties();
+        dataSourceProperties.setUrl(jdbcPropertyResolver.getProperty("url"));
+        dataSourceProperties.setUsername(jdbcPropertyResolver.getProperty("username"));
+        dataSourceProperties.setPassword(jdbcPropertyResolver.getProperty("password"));
+        dataSourceProperties.setDriverClassName(jdbcPropertyResolver.getProperty("driverClassName"));
+        return dataSourceProperties;
+    }
+
+    /**
+     * 数据源管理
+     * @return
+     */
+    @Bean
     public DataSource primaryDataSource(){
-        return DataSourceBuilder.create().build();
+        DataSourceProperties dataSourceProperties = primaryDataSourceProperties();
+        return dataSourceProperties.initializeDataSourceBuilder().build();
     }
 
     /**
@@ -58,15 +77,16 @@ public class ModuleConfig implements EnvironmentAware,TransactionManagementConfi
     public SqlSessionFactory sqlSessionFactory() throws Exception{
         SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(primaryDataSource());
-        sessionFactoryBean.setTypeAliasesPackage(propertyResolver.getProperty("typeAliasesPackage"));
-        sessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(propertyResolver.getProperty("mapperLocations")));
+        sessionFactoryBean.setTypeAliasesPackage(propertyResolver.getProperty("type-aliases-package"));
+        sessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(propertyResolver.getProperty("mapper-locations")));
 
 //        mybatis分页插件
         PageHelper pageHelper = new PageHelper();
         Properties properties = new Properties();
+        properties.setProperty("dialect","mysql");
         properties.setProperty("reasonable", "true");
         properties.setProperty("supportMethodsArguments", "true");
-        properties.setProperty("returnPageInfo", "check");
+//        properties.setProperty("returnPageInfo", "check");
         properties.setProperty("params", "count=countSql");
         pageHelper.setProperties(properties);
 //        添加插件
@@ -92,6 +112,7 @@ public class ModuleConfig implements EnvironmentAware,TransactionManagementConfi
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer(){
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
+        mapperScannerConfigurer.setBasePackage("cn.mazekkkk.product.dao.mapper");
         Properties propertiesMapper = new Properties();
         propertiesMapper.setProperty("mappers","tk.mybatis.mapper.common.Mapper");
         propertiesMapper.setProperty("IDENTITY","SELECT REPLACE(UUID(),'-','')");
@@ -99,4 +120,5 @@ public class ModuleConfig implements EnvironmentAware,TransactionManagementConfi
         mapperScannerConfigurer.setProperties(propertiesMapper);
         return mapperScannerConfigurer;
     }
+
 }

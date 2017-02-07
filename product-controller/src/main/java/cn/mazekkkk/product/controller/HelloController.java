@@ -87,7 +87,7 @@ public class HelloController {
 
     @RequestMapping("/GameTrad/Save")
     @ResponseBody
-    public void redisGet(Gametrade gametrade){
+    public void saveGameTrade(Gametrade gametrade){
         gameTradeService.saveGameTrade(gametrade);
     }
 

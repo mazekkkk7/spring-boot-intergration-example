@@ -11,17 +11,14 @@ import redis.clients.jedis.JedisPoolConfig;
 
 @Configuration
 @EnableAutoConfiguration
-@ConfigurationProperties(prefix = "spring.redis", locations = "classpath:application.properties")
+@ConfigurationProperties(prefix = "spring.redis")
 public class RedisConfig {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private String host;
-
     private int port;
-
     private String password;
-
     private int timeout;
 
     @Bean

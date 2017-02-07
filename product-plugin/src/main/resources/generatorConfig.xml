@@ -6,9 +6,9 @@
 <generatorConfiguration>
     <properties resource="application-datasource.properties"></properties>
 
-    <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
         <!-- simple模式没有Example -->
-    <!--<context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">-->
+    <!--<context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">-->
 
         <!-- 配置通用Mapper的生成类 start -->
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
@@ -71,6 +71,11 @@
         <!--<table schema="" tableName="s_role">-->
 
             <!--<generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <!--<table schema="" tableName="gametrade" enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">-->
+
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"></generatedKey>-->
         <!--</table>-->
 
         <table schema="" tableName="gametrade">

@@ -3,6 +3,8 @@ package cn.mazekkkk.product.service.impl;
 import cn.mazekkkk.product.dao.common.Gametrade;
 import cn.mazekkkk.product.dao.mapper.GametradeMapper;
 import cn.mazekkkk.product.service.GameTradeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ public class GameTradeServiceImpl implements GameTradeService {
 
     @Autowired
     private GametradeMapper gametradeMapper;
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
      * 保存游戏交易
@@ -22,5 +25,6 @@ public class GameTradeServiceImpl implements GameTradeService {
     @Override
     public void saveGameTrade(Gametrade gametrade) {
         gametradeMapper.insert(gametrade);
+        logger.info("gameTrade主键回显为:"+gametrade.getId());
     }
 }
