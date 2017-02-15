@@ -64,6 +64,20 @@ public class RedisServiceImpl implements IRedisService {
         return result;
     }
 
+    @Override
+    public void del(String key) {
+        Jedis jedis = null;
+        try{
+            jedis = getResource();
+            jedis.del(key);
+            logger.info("Redis del success - "+key+"");
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("Redis del error: "+e.getMessage()+" - "+key+"");
+        }finally {
+            returnResource(jedis);
+        }
+    }
 }
 
 

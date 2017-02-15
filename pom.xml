@@ -16,6 +16,7 @@
 		<module>product-plugin</module>
 		<module>product-security</module>
 		<module>product-redis</module>
+		<module>product-canal</module>
 	</modules>
 	<packaging>pom</packaging>
 

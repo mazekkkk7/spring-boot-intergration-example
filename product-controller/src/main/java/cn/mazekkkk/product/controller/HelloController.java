@@ -1,5 +1,6 @@
 package cn.mazekkkk.product.controller;
 
+import cn.mazekkkk.product.canal.CanalClient;
 import cn.mazekkkk.product.dao.common.Gametrade;
 import cn.mazekkkk.product.redis.service.IRedisService;
 import cn.mazekkkk.product.scheduler.ScheduleTaskService;
@@ -29,6 +30,8 @@ public class HelloController {
     private IRedisService redisService;
     @Autowired
     private GameTradeService gameTradeService;
+    @Autowired
+    private CanalClient canalClient;
 
     public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -65,30 +68,36 @@ public class HelloController {
      * @param model 视图模型
      * @return
      */
-    @RequestMapping("/greetingView")
+    @RequestMapping("/greeting")
     public String greeting(@RequestParam(value = "name", required = false,defaultValue = "world") String name, Model model){
         model.addAttribute("name",name);
         return "greeting";
     }
 
-    @RequestMapping("/redis/set")
+    @RequestMapping("/redis/redisSet")
     @ResponseBody
     public Object redisSet(@RequestParam("value")String value){
         redisService.set("name", value);
         return value;
     }
 
-    @RequestMapping("/redis/get")
+    @RequestMapping("/redis/redisGet")
     @ResponseBody
     public Object redisGet(){
         String name = redisService.get("name");
         return name;
     }
 
-    @RequestMapping("/GameTrad/Save")
+    @RequestMapping("/GameTrad/saveGameTrade")
     @ResponseBody
     public void saveGameTrade(Gametrade gametrade){
         gameTradeService.saveGameTrade(gametrade);
+    }
+
+    @RequestMapping("/Canal/syncGameTradeTest")
+    @ResponseBody
+    public void syncGameTradeTest(){
+        canalClient.sync();
     }
 
 }
