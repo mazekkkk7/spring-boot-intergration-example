@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.mazekkkk.product.dao.mapper.GametradeMapper" >
+  <cache eviction="LRU" type="cn.mazekkkk.product.dao.config.MyBatisRedisCache"/>
   <resultMap id="BaseResultMap" type="cn.mazekkkk.product.dao.common.Gametrade" >
     <!--
       WARNING - @mbg.generated

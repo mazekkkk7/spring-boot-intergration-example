@@ -1,10 +1,11 @@
 package cn.mazekkkk.product.dao.common;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Table(name = "gametrade")
-public class Gametrade {
+public class Gametrade implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;

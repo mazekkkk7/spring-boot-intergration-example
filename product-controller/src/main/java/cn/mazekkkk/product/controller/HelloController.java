@@ -1,6 +1,5 @@
 package cn.mazekkkk.product.controller;
 
-import cn.mazekkkk.product.canal.CanalClient;
 import cn.mazekkkk.product.dao.common.Gametrade;
 import cn.mazekkkk.product.redis.service.IRedisService;
 import cn.mazekkkk.product.scheduler.ScheduleTaskService;
@@ -30,8 +29,6 @@ public class HelloController {
     private IRedisService redisService;
     @Autowired
     private GameTradeService gameTradeService;
-    @Autowired
-    private CanalClient canalClient;
 
     public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -88,16 +85,16 @@ public class HelloController {
         return name;
     }
 
-    @RequestMapping("/GameTrad/saveGameTrade")
+    @RequestMapping("/GameTrade/saveGameTrade")
     @ResponseBody
     public void saveGameTrade(Gametrade gametrade){
         gameTradeService.saveGameTrade(gametrade);
     }
 
-    @RequestMapping("/Canal/syncGameTradeTest")
+    @RequestMapping("/GameTrade/getGameTradePage")
     @ResponseBody
-    public void syncGameTradeTest(){
-        canalClient.sync();
+    public Object getGameTradePage(Integer page){
+        return gameTradeService.getGameTrdePage(page);
     }
 
 }

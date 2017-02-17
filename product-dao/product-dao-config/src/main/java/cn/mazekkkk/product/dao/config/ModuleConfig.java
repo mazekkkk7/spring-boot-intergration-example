@@ -1,10 +1,12 @@
 package cn.mazekkkk.product.dao.config;
 
+import cn.mazekkkk.product.redis.service.IRedisService;
 import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
@@ -79,20 +81,37 @@ public class ModuleConfig implements EnvironmentAware,TransactionManagementConfi
         sessionFactoryBean.setDataSource(primaryDataSource());
         sessionFactoryBean.setTypeAliasesPackage(propertyResolver.getProperty("type-aliases-package"));
         sessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(propertyResolver.getProperty("mapper-locations")));
+        sessionFactoryBean.setConfigurationProperties(getMyBatisProperties());
 
-//        mybatis分页插件
         PageHelper pageHelper = new PageHelper();
+        pageHelper.setProperties(getPageHelperProperties());
+        sessionFactoryBean.setPlugins(new Interceptor[]{pageHelper});
+
+        return sessionFactoryBean.getObject();
+    }
+
+    /**
+     * 构建pageHelper配置
+     * @return
+     */
+    public Properties getPageHelperProperties(){
         Properties properties = new Properties();
         properties.setProperty("dialect","mysql");
         properties.setProperty("reasonable", "true");
         properties.setProperty("supportMethodsArguments", "true");
-//        properties.setProperty("returnPageInfo", "check");
         properties.setProperty("params", "count=countSql");
-        pageHelper.setProperties(properties);
-//        添加插件
-        sessionFactoryBean.setPlugins(new Interceptor[]{pageHelper});
+        return properties;
+    }
 
-        return sessionFactoryBean.getObject();
+    /**
+     * 构建Mybatis配置
+     * @return
+     */
+    public Properties getMyBatisProperties(){
+        Properties properties = new Properties();
+        properties.setProperty("cacheEnabled","true");
+
+        return properties;
     }
 
     /**
@@ -119,6 +138,18 @@ public class ModuleConfig implements EnvironmentAware,TransactionManagementConfi
         propertiesMapper.setProperty("ORDER","BEFORE");
         mapperScannerConfigurer.setProperties(propertiesMapper);
         return mapperScannerConfigurer;
+    }
+
+    /**
+     * 注入静态redis服务
+     * @param iRedisService redis服务
+     * @return
+     */
+    @Bean
+    @Autowired
+    public Object setRedisService(IRedisService iRedisService){
+        MyBatisRedisCache.setRedisService(iRedisService);
+        return null;
     }
 
 }
