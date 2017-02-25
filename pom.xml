@@ -17,7 +17,8 @@
 		<module>product-security</module>
 		<module>product-redis</module>
 		<module>product-canal</module>
-	</modules>
+        <module>product-mina</module>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>mazekkkk</name>

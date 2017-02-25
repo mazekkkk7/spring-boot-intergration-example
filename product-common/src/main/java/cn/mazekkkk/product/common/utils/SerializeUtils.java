@@ -50,7 +50,7 @@ public class SerializeUtils {
             ObjectInputStream ois = new ObjectInputStream(bais);
             return ois.readObject();
         } catch (Exception e) {
-            logger.info("获取内容为空，或为Redis中不存在对应Key");
+            logger.info("is Empty，Maybe redis not cache this key");
         }
         return null;
     }

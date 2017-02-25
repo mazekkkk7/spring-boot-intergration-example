@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mazekkkk</artifactId>
+        <groupId>cn.mazekkkk.product</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <version.mina>2.0.13</version.mina>
+    </properties>
+
+    <artifactId>product-mina</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.mazekkkk.product</groupId>
+            <artifactId>product-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-core</artifactId>
+            <version>${version.mina}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-integration-jmx</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.mina</groupId>
+                    <artifactId>mina-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.mina</groupId>
+                    <artifactId>mina-integration-beans</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.mina</groupId>
+                    <artifactId>mina-integration-ognl</artifactId>
+                </exclusion>
+            </exclusions>
+            <version>${version.mina}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-integration-beans</artifactId>
+            <version>${version.mina}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.mina</groupId>
+                    <artifactId>mina-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-integration-ognl</artifactId>
+            <version>${version.mina}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.mina</groupId>
+                    <artifactId>mina-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.mina</groupId>
+                    <artifactId>mina-integration-beans</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>cn.mazekkkk.product</groupId>
+            <artifactId>product-redis</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.mazekkkk.product</groupId>
+            <artifactId>product-activemq</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.mazekkkk.product</groupId>
+            <artifactId>product-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+</project>

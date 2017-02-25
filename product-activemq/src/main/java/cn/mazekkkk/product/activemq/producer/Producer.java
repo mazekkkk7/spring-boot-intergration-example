@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.stereotype.Component;
 
+import javax.jms.JMSException;
 import javax.jms.Queue;
 
 @Component
@@ -28,9 +29,6 @@ public class Producer {
 	@Autowired
 	private JmsMessagingTemplate jmsMessagingTemplate;
 
-	@Autowired
-	private Queue queue;
-
 //	@Scheduled(fixedRate = 5000)
 	public void run() throws Exception {
 		send("Sample message");
@@ -38,7 +36,13 @@ public class Producer {
 	}
 
 	public void send(String msg) {
-		this.jmsMessagingTemplate.convertAndSend(this.queue, msg);
+		Queue queue = new Queue() {
+			@Override
+			public String getQueueName() throws JMSException {
+				return "text";
+			}
+		};
+		this.jmsMessagingTemplate.convertAndSend(queue, msg);
 	}
 
 }

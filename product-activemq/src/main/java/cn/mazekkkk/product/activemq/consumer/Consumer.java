@@ -27,4 +27,9 @@ public class Consumer {
 		System.out.println(text);
 	}
 
+	@JmsListener(destination = "text")
+	public void receiveTextQueue(String text) {
+		System.out.println(text);
+	}
+
 }
