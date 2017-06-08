@@ -17,6 +17,11 @@
             <artifactId>spring-boot-starter-redis</artifactId>
             <version>1.4.0.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>cn.mazekkkk.product</groupId>
+            <artifactId>product-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

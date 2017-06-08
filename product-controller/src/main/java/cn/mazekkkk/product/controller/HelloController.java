@@ -42,7 +42,7 @@ public class HelloController {
     @ResponseBody
     public Object hello() {
         logger.info("test insert----------------------");
-        return "build Spring boot Success!";
+        return "hello";
     }
 
     /**
@@ -69,6 +69,18 @@ public class HelloController {
     public String greeting(@RequestParam(value = "name", required = false,defaultValue = "world") String name, Model model){
         model.addAttribute("name",name);
         return "greeting";
+    }
+
+    /**
+     * thymeleaf 推送html数据
+     * @param name 参数名称
+     * @param model 视图模型
+     * @return
+     */
+    @RequestMapping("/extjs")
+    public String extjs(@RequestParam(value = "name", required = false,defaultValue = "world") String name, Model model){
+        model.addAttribute("name",name);
+        return "extjs";
     }
 
     @RequestMapping("/redis/redisSet")

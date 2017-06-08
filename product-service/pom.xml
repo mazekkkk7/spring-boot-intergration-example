@@ -37,6 +37,7 @@
             <artifactId>product-dao-config</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
     </dependencies>
 
 </project>
