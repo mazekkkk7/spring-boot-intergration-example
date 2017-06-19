@@ -9,8 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-//@EnableWebMvc
-//@EnableAutoConfiguration(exclude = DataSourceAutoConfiguration.class)
 @EnableAutoConfiguration
 @EnableJms
 @ComponentScan(basePackages = { "cn.mazekkkk.product" })
@@ -20,5 +18,6 @@ public class MazekkkkApplication {
 		SpringApplication app = new SpringApplication(MazekkkkApplication.class);
 		app.run(args);
 	}
+
 
 }

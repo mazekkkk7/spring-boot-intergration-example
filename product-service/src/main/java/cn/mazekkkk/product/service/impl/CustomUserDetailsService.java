@@ -28,6 +28,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         // SecurityUser实现UserDetails并将SUser的Email映射为username
         return new SecurityUser(sUser); //code9
     }
+
+
 }
 
 

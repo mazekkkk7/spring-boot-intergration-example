@@ -9,7 +9,6 @@ import cn.mazekkkk.product.service.SUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -71,7 +70,7 @@ public class SUserServiceImpl implements SUserService {
 //        data = sUserMapper.selectByExample(new SUserExample());
 //        BaseResultMap baseResultMap =  new BaseResultMap(result,message,errorMessage,data);
 
-        return new ArrayList<SUser>();
+        return sUserMapper.selectByExample(new SUserExample());
 
     }
 
