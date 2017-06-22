@@ -1,6 +1,5 @@
 package cn.mazekkkk.product.security;
 
-import cn.mazekkkk.product.service.impl.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,11 +22,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 public class OAuthSecurityConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
-    private CustomUserDetailsService customUserDetailsService;
-
-    @Autowired
     private AuthenticationManager authenticationManager;
-
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -39,7 +34,7 @@ public class OAuthSecurityConfig extends AuthorizationServerConfigurerAdapter {
         clients.inMemory()
                 .withClient("client")
                 .secret("secret")
-                .authorizedGrantTypes("authorization_code","client_credentials","password")
+                .authorizedGrantTypes("authorization_code","password")
                 .scopes("read","write");
     }
 
