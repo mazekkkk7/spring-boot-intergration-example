@@ -74,7 +74,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 //登录后记住用户，下次自动登录
                 //数据库中必须存在名为persistent_logins的表
-                //建表语句见code15
                 .rememberMe()
                 .tokenValiditySeconds(1209600)
                 //指定记住登录信息所使用的数据源
@@ -86,12 +85,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
     }
-
-//    @Bean
-//    @ConfigurationProperties("github")
-//    public ClientResources githubClient() {
-//        return new ClientResources();
-//    }
 
     @Bean
     public FilterRegistrationBean oauth2ClientFilterRegistration(
@@ -107,7 +100,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new Md5PasswordEncoder();
     }
 
-    //    存储token的数据源配置
     @Bean
     public JdbcTokenRepositoryImpl tokenRepository(){
         JdbcTokenRepositoryImpl jdbcTokenRepository = new JdbcTokenRepositoryImpl();

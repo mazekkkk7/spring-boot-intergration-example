@@ -18,6 +18,7 @@
 		<module>product-redis</module>
 		<module>product-canal</module>
         <module>product-mina</module>
+		<module>product-interceptors</module>
 	</modules>
 	<packaging>pom</packaging>
 
