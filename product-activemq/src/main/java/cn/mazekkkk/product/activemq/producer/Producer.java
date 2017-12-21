@@ -16,33 +16,29 @@
 
 package cn.mazekkkk.product.activemq.producer;
 
+import cn.mazekkkk.product.activemq.ActiveMq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import javax.jms.JMSException;
-import javax.jms.Queue;
 
 @Component
 public class Producer {
 
 	@Autowired
+	private ActiveMq activeMq;
+
+	@Autowired
 	private JmsMessagingTemplate jmsMessagingTemplate;
 
-//	@Scheduled(fixedRate = 5000)
+	@Scheduled(fixedRate = 5000)
 	public void run() throws Exception {
-		send("Sample message");
+		this.send("Sample message");
 		System.out.println("Message was sent to the Queue");
 	}
 
 	public void send(String msg) {
-		Queue queue = new Queue() {
-			@Override
-			public String getQueueName() throws JMSException {
-				return "text";
-			}
-		};
-		this.jmsMessagingTemplate.convertAndSend(queue, msg);
+		this.jmsMessagingTemplate.convertAndSend(activeMq.queue(), msg);
 	}
 
 }

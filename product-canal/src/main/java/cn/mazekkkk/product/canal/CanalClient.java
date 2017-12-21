@@ -30,7 +30,7 @@ public class CanalClient implements ApplicationListener<ApplicationReadyEvent> {
      */
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
-        this.sync();
+//        this.sync();
         logger.info("==========BinlogStartUpSuccess==========");
     }
 
@@ -46,7 +46,8 @@ public class CanalClient implements ApplicationListener<ApplicationReadyEvent> {
             connector.subscribe();
             connector.rollback();
             while (true) {
-                Message message = connector.getWithoutAck(batchSize); // 获取指定数量的数据
+                // 获取指定数量的数据
+                Message message = connector.getWithoutAck(batchSize);
                 long batchId = message.getId();
                 int size = message.getEntries().size();
                 if (batchId == -1 || size == 0) {
@@ -58,7 +59,8 @@ public class CanalClient implements ApplicationListener<ApplicationReadyEvent> {
                 } else {
                     printEntry(message.getEntries());
                 }
-                connector.ack(batchId); // 提交确认
+                // 提交确认
+                connector.ack(batchId);
                 // connector.rollback(batchId); // 处理失败, 回滚数据
             }
         } finally {

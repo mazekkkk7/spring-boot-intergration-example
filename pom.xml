@@ -19,7 +19,8 @@
 		<module>product-canal</module>
         <module>product-mina</module>
 		<module>product-interceptors</module>
-	</modules>
+        <module>product-cache</module>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>mazekkkk</name>

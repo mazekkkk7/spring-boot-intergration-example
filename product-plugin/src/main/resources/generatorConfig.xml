@@ -6,17 +6,24 @@
 <generatorConfiguration>
     <properties resource="application-datasource.properties"></properties>
 
-    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+    <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
         <!-- simple模式没有Example -->
     <!--<context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">-->
 
         <!-- 配置通用Mapper的生成类 start -->
-        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
-            <!-- 设置Mysql忽略大小写 -->
-            <property name="caseSensitive" value="true"/>
-        </plugin>
+        <!--<plugin type="tk.mybatis.mapper.generator.MapperPlugin">-->
+            <!--<property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>-->
+            <!--&lt;!&ndash; 设置Mysql忽略大小写 &ndash;&gt;-->
+            <!--<property name="caseSensitive" value="true"/>-->
+        <!--</plugin>-->
         <!-- 配置通用Mapper的生成类 end -->
+
+        <!-- 配置生成的 注释 和 日期 start -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="false"/>
+        </commentGenerator>
+        <!-- 配置生成的 注释 和 日期 end -->
 
         <!-- 数据库配置 start -->
         <jdbcConnection driverClass="${datasource.primary.driver-class-name}"
@@ -78,10 +85,41 @@
             <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"></generatedKey>-->
         <!--</table>-->
 
-        <table schema="" tableName="gametrade">
+        <!--<table schema="" tableName="tbl_order_rejected_record"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false">-->
 
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"></generatedKey>
+            <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <!--<table schema="" tableName="tbl_medical_suggest"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false">-->
+
+            <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <!--<table schema="" tableName="tbl_physician_verify"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false">-->
+
+            <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <!--<table schema="" tableName="tbl_title_verify"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false">-->
+
+            <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <table schema="" tableName="tbl_doctor_verify"
+               enableUpdateByExample="false"
+               enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false">
+
+            <generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>
         </table>
+
 
         <!--生成表end-->
     </context>

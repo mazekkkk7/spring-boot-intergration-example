@@ -56,7 +56,7 @@ public class ModuleConfig implements EnvironmentAware,TransactionManagementConfi
         dataSourceProperties.setUrl(jdbcPropertyResolver.getProperty("url"));
         dataSourceProperties.setUsername(jdbcPropertyResolver.getProperty("username"));
         dataSourceProperties.setPassword(jdbcPropertyResolver.getProperty("password"));
-        dataSourceProperties.setDriverClassName(jdbcPropertyResolver.getProperty("driverClassName"));
+        dataSourceProperties.setDriverClassName(jdbcPropertyResolver.getProperty("driver-class-name"));
         return dataSourceProperties;
     }
 

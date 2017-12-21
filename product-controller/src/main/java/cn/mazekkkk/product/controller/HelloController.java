@@ -3,6 +3,7 @@ package cn.mazekkkk.product.controller;
 import cn.mazekkkk.product.dao.common.Gametrade;
 import cn.mazekkkk.product.redis.service.IRedisService;
 import cn.mazekkkk.product.scheduler.ScheduleTaskService;
+import cn.mazekkkk.product.service.DoctorVerifyService;
 import cn.mazekkkk.product.service.GameTradeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,8 @@ public class HelloController {
     private IRedisService redisService;
     @Autowired
     private GameTradeService gameTradeService;
+    @Autowired
+    private DoctorVerifyService doctorVerifyService;
 
     public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -107,6 +110,12 @@ public class HelloController {
     @ResponseBody
     public Object getGameTradePage(Integer page){
         return gameTradeService.getGameTrdePage(page);
+    }
+
+    @RequestMapping("/doctor/DoctorVerify")
+    @ResponseBody
+    public Object getDoctorVerify(Integer id){
+        return doctorVerifyService.getDoctorVerify(id);
     }
 
 }

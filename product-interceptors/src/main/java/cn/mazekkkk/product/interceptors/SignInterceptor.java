@@ -1,7 +1,5 @@
 package cn.mazekkkk.product.interceptors;
 
-import cn.mazekkkk.product.common.utils.MD5Util;
-import cn.mazekkkk.product.common.utils.MapUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
@@ -15,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -36,46 +33,47 @@ public class SignInterceptor extends HandlerInterceptorAdapter implements Enviro
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
-        Map<String, String[]> parameterMap = request.getParameterMap();
-        Boolean flag;
-        String sign;
-        String requestSign = "";
-        /**
-         * 检查请求时间是否超时
-         */
-        flag = this.checkRequestTime(parameterMap,sdf);
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+//        Map<String, String[]> parameterMap  = request.getParameterMap();
+//        Boolean flag;
+//        String sign;
+//        String requestSign = "";
+//        /**
+//         * 检查请求时间是否超时
+//         */
+//        flag = this.checkRequestTime(parameterMap,sdf);
+//
+//        /**
+//         * 如果时间超时直接返回
+//         */
+//        if(flag==false){
+//            return flag;
+//        }
+//
+//        if(parameterMap.containsKey("sign")){
+//            requestSign = parameterMap.get("sign").toString();
+//            parameterMap.remove("sign");
+//        }
+//
+//        List keyList = MapUtils.sortKeyAsc(parameterMap);
+//        String key = "";
+//        for (int i = 0; i < keyList.size(); i++) {
+//            key += keyList.get(i).toString();
+//        }
+//
+//        sign = MD5Util.MD5Encode(key+SECRET_KEY,"UTF8");
+//
+//        /**
+//         * 检查签名算法
+//         */
+//        if(sign.equals(requestSign)){
+//            flag = true;
+//        }else{
+//            flag = false;
+//        }
 
-        /**
-         * 如果时间超时直接返回
-         */
-        if(flag==false){
-            return flag;
-        }
-
-        if(parameterMap.containsKey("sign")){
-            requestSign = parameterMap.get("sign").toString();
-            parameterMap.remove("sign");
-        }
-
-        List keyList = MapUtils.sortKeyAsc(parameterMap);
-        String key = "";
-        for (int i = 0; i < keyList.size(); i++) {
-            key += keyList.get(i).toString();
-        }
-
-        sign = MD5Util.MD5Encode(key+SECRET_KEY,"UTF8");
-
-        /**
-         * 检查签名算法
-         */
-        if(sign.equals(requestSign)){
-            flag = true;
-        }else{
-            flag = false;
-        }
-
-        return flag;
+//        return flag;
+        return true;
     }
 
     /**
