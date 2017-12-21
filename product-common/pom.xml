@@ -22,7 +22,7 @@
             <artifactId>persistence-api</artifactId>
             <version>1.0.2</version>
         </dependency>
-        <!-- spring boot start -->
+        <!-- spring boot 使用start的依赖可以自己配置 start -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -57,6 +57,10 @@
             <artifactId>mapper-spring-boot-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
         <!-- spring boot end -->
 
         <!-- spring start -->
@@ -85,10 +89,7 @@
             <version>2.5</version>
         </dependency>
         <!-- spring support end -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

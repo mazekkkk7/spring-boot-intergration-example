@@ -12,6 +12,12 @@
     <artifactId>product-redis</artifactId>
 
     <dependencies>
+        <!--redis 使用start的依赖可以自己配置 明天问一下学贵为什么我这个工程就不用配置start 也可以启动 start-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-data-redis</artifactId>-->
+        <!--</dependency>-->
+        <!--redis end-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
