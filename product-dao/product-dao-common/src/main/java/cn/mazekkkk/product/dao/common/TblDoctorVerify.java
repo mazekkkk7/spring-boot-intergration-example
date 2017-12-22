@@ -67,6 +67,9 @@ public class TblDoctorVerify implements Serializable {
 
     private Date updateTime;
 
+    public TblDoctorVerify() {
+    }
+
     public Integer getId() {
         return id;
     }

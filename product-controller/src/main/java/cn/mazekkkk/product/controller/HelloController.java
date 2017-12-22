@@ -1,6 +1,7 @@
 package cn.mazekkkk.product.controller;
 
 import cn.mazekkkk.product.dao.common.Gametrade;
+import cn.mazekkkk.product.dao.common.TblDoctorVerify;
 import cn.mazekkkk.product.redis.service.IRedisService;
 import cn.mazekkkk.product.scheduler.ScheduleTaskService;
 import cn.mazekkkk.product.service.DoctorVerifyService;
@@ -8,12 +9,12 @@ import cn.mazekkkk.product.service.GameTradeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -116,6 +117,12 @@ public class HelloController {
     @ResponseBody
     public Object getDoctorVerify(Integer id){
         return doctorVerifyService.getDoctorVerify(id);
+    }
+
+    @RequestMapping(value = "/doctor/DoctorVerify/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public void getDoctorVerify(@RequestBody @Valid TblDoctorVerify tblDoctorVerify) {
+        doctorVerifyService.updateDoctorVerify(tblDoctorVerify);
     }
 
 }

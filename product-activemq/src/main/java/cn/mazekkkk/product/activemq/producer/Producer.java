@@ -19,7 +19,6 @@ package cn.mazekkkk.product.activemq.producer;
 import cn.mazekkkk.product.activemq.ActiveMq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -31,7 +30,7 @@ public class Producer {
 	@Autowired
 	private JmsMessagingTemplate jmsMessagingTemplate;
 
-	@Scheduled(fixedRate = 5000)
+//	@Scheduled(fixedRate = 5000)
 	public void run() throws Exception {
 		this.send("Sample message");
 		System.out.println("Message was sent to the Queue");

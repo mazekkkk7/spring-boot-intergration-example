@@ -16,4 +16,11 @@ public interface DoctorVerifyService {
      * @return
      */
     TblDoctorVerify getDoctorVerify(Integer id);
+
+    /**
+     * 更新医师信息
+     *
+     * @param tblDoctorVerify
+     */
+    void updateDoctorVerify(TblDoctorVerify tblDoctorVerify);
 }
