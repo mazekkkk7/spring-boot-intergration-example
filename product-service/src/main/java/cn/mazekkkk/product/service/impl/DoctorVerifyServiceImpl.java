@@ -2,11 +2,11 @@ package cn.mazekkkk.product.service.impl;
 
 import cn.mazekkkk.product.dao.common.TblDoctorVerify;
 import cn.mazekkkk.product.dao.mapper.TblDoctorVerifyMapper;
+import cn.mazekkkk.product.service.CacheReloadService;
 import cn.mazekkkk.product.service.DoctorVerifyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +23,8 @@ public class DoctorVerifyServiceImpl implements DoctorVerifyService {
 
     @Autowired
     private TblDoctorVerifyMapper tblDoctorVerifyMapper;
+    @Autowired
+    private CacheReloadService cacheReloadService;
 
     /**
      * 获取医师认证信息根据主键
@@ -37,9 +39,9 @@ public class DoctorVerifyServiceImpl implements DoctorVerifyService {
         return tblDoctorVerifyMapper.selectByPrimaryKey(id);
     }
 
-    @CachePut(key = "'doctorVerify_'+#tblDoctorVerify.id",value = "doctorVerifyCache")
     @Override
     public void updateDoctorVerify(TblDoctorVerify tblDoctorVerify) {
         tblDoctorVerifyMapper.updateByPrimaryKeySelective(tblDoctorVerify);
+        cacheReloadService.doctorVerifyCacheReload(tblDoctorVerify.getId());
     }
 }

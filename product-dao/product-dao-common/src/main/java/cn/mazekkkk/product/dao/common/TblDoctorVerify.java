@@ -1,5 +1,6 @@
 package cn.mazekkkk.product.dao.common;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,6 +8,7 @@ import java.util.Date;
  * @author maze
  */
 public class TblDoctorVerify implements Serializable {
+    @NotNull(message = "id不能为空")
     private Integer id;
 
     private Integer doctorId;

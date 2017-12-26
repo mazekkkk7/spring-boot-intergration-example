@@ -4,6 +4,7 @@ import cn.mazekkkk.product.dao.common.Gametrade;
 import cn.mazekkkk.product.dao.common.TblDoctorVerify;
 import cn.mazekkkk.product.redis.service.IRedisService;
 import cn.mazekkkk.product.scheduler.ScheduleTaskService;
+import cn.mazekkkk.product.service.CacheReloadService;
 import cn.mazekkkk.product.service.DoctorVerifyService;
 import cn.mazekkkk.product.service.GameTradeService;
 import org.slf4j.Logger;
@@ -33,6 +34,8 @@ public class HelloController {
     private GameTradeService gameTradeService;
     @Autowired
     private DoctorVerifyService doctorVerifyService;
+    @Autowired
+    private CacheReloadService cacheReloadService;
 
     public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -123,6 +126,12 @@ public class HelloController {
     @ResponseBody
     public void getDoctorVerify(@RequestBody @Valid TblDoctorVerify tblDoctorVerify) {
         doctorVerifyService.updateDoctorVerify(tblDoctorVerify);
+    }
+
+    @RequestMapping(value = "/doctor/DoctorVerify/cacheReload", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @ResponseBody
+    public void doctorVerifyCacheReload(@RequestBody @Valid TblDoctorVerify tblDoctorVerify) {
+        cacheReloadService.doctorVerifyCacheReload(tblDoctorVerify.getId());
     }
 
 }
