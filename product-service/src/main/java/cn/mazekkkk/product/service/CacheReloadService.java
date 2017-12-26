@@ -18,4 +18,11 @@ public interface CacheReloadService {
      */
     TblDoctorVerify doctorVerifyCacheReload(Integer id);
 
+    /**
+     * 医师认证信息清空重载
+     *
+     * @param id
+     */
+    void doctorVerifyCacheEvictReload(Integer id);
+
 }

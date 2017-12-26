@@ -5,6 +5,7 @@ import cn.mazekkkk.product.dao.mapper.TblDoctorVerifyMapper;
 import cn.mazekkkk.product.service.CacheReloadService;
 import cn.mazekkkk.product.service.DoctorVerifyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +33,16 @@ public class CacheReloadServiceImpl implements CacheReloadService {
     @Override
     public TblDoctorVerify doctorVerifyCacheReload(Integer id) {
         return tblDoctorVerifyMapper.selectByPrimaryKey(id);
+    }
+
+    /**
+     * 医师认证信息清空重载
+     *
+     * @param id
+     */
+    @CacheEvict(key = "'doctorVerify_'+#id", value = "doctorVerifyCache")
+    @Override
+    public void doctorVerifyCacheEvictReload(Integer id) {
+        doctorVerifyService.getDoctorVerify(id);
     }
 }
