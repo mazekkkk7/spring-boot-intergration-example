@@ -24,7 +24,7 @@ public class DoctorVerifyServiceImpl implements DoctorVerifyService {
     @Autowired
     private TblDoctorVerifyMapper tblDoctorVerifyMapper;
     @Autowired
-    private CacheReloadService cacheReloadService;
+    private CacheReloadService cacheReloadServiceImpl;
 
     /**
      * 获取医师认证信息根据主键
@@ -42,6 +42,6 @@ public class DoctorVerifyServiceImpl implements DoctorVerifyService {
     @Override
     public void updateDoctorVerify(TblDoctorVerify tblDoctorVerify) {
         tblDoctorVerifyMapper.updateByPrimaryKeySelective(tblDoctorVerify);
-        cacheReloadService.doctorVerifyCacheReload(tblDoctorVerify.getId());
+        cacheReloadServiceImpl.doctorVerifyCache(tblDoctorVerify.getId());
     }
 }

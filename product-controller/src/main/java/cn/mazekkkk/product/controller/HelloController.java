@@ -33,9 +33,11 @@ public class HelloController {
     @Autowired
     private GameTradeService gameTradeService;
     @Autowired
-    private DoctorVerifyService doctorVerifyService;
+    private DoctorVerifyService doctorVerifyServiceImpl;
     @Autowired
-    private CacheReloadService cacheReloadService;
+    private CacheReloadService cacheReloadServiceImpl;
+//    @Autowired
+//    private BookService bookService;
 
     public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -119,25 +121,31 @@ public class HelloController {
     @RequestMapping("/doctor/DoctorVerify")
     @ResponseBody
     public Object getDoctorVerify(Integer id){
-        return doctorVerifyService.getDoctorVerify(id);
+        return doctorVerifyServiceImpl.getDoctorVerify(id);
     }
 
     @RequestMapping(value = "/doctor/DoctorVerify/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public void getDoctorVerify(@RequestBody @Valid TblDoctorVerify tblDoctorVerify) {
-        doctorVerifyService.updateDoctorVerify(tblDoctorVerify);
+        doctorVerifyServiceImpl.updateDoctorVerify(tblDoctorVerify);
     }
 
     @RequestMapping(value = "/doctor/DoctorVerify/cacheReload", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public void doctorVerifyCacheReload(@RequestBody @Valid TblDoctorVerify tblDoctorVerify) {
-        cacheReloadService.doctorVerifyCacheReload(tblDoctorVerify.getId());
+        cacheReloadServiceImpl.doctorVerifyCache(tblDoctorVerify.getId());
     }
 
     @RequestMapping(value = "/doctor/DoctorVerify/cacheEvictReload", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
     public void doctorVerifyCacheEvictReload(@RequestBody @Valid TblDoctorVerify tblDoctorVerify) {
-        cacheReloadService.doctorVerifyCacheEvictReload(tblDoctorVerify.getId());
+        cacheReloadServiceImpl.doctorVerifyCacheReload(tblDoctorVerify.getId());
     }
+
+//    @RequestMapping(value = "/book/match", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+//    @ResponseBody
+//    public Object matchBookAll() {
+//        return bookService.bookMatchAll(1,20);
+//    }
 
 }

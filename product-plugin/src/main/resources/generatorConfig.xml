@@ -113,12 +113,54 @@
             <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>-->
         <!--</table>-->
 
-        <table schema="" tableName="tbl_doctor_verify"
+        <!--<table schema="" tableName="tbl_member"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false">-->
+
+            <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <!--<table schema="" tableName="tbl_doctor"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false">-->
+
+            <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <!--<table schema="" tableName="tbl_doctor_temp"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false">-->
+
+            <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <!--<table schema="" tableName="tbl_member_vip_card"-->
+                <!--enableUpdateByExample="false"-->
+                <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false">-->
+
+        <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <table schema="" tableName="tbl_service_package"
                enableUpdateByExample="false"
                enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false">
 
             <generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>
         </table>
+
+        <!--<table schema="" tableName="tbl_doctor_server"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false">-->
+
+            <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>-->
+        <!--</table>-->
+
+        <!--<table schema="" tableName="tbl_serve"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false">-->
+
+            <!--<generatedKey column="ID" sqlStatement="Mysql" identity="true"></generatedKey>-->
+        <!--</table>-->
 
 
         <!--生成表end-->

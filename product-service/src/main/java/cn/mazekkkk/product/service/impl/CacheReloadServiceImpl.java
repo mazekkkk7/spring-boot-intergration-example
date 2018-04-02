@@ -5,8 +5,8 @@ import cn.mazekkkk.product.dao.mapper.TblDoctorVerifyMapper;
 import cn.mazekkkk.product.service.CacheReloadService;
 import cn.mazekkkk.product.service.DoctorVerifyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,9 +29,9 @@ public class CacheReloadServiceImpl implements CacheReloadService {
      * @param id
      * @return
      */
-    @CachePut(key = "'doctorVerify_'+#id", value = "doctorVerifyCache")
+    @Cacheable(key = "'doctorVerify_'+#id", value = "doctorVerifyCache")
     @Override
-    public TblDoctorVerify doctorVerifyCacheReload(Integer id) {
+    public TblDoctorVerify doctorVerifyCache(Integer id) {
         return tblDoctorVerifyMapper.selectByPrimaryKey(id);
     }
 
@@ -40,9 +40,9 @@ public class CacheReloadServiceImpl implements CacheReloadService {
      *
      * @param id
      */
-    @CacheEvict(key = "'doctorVerify_'+#id", value = "doctorVerifyCache")
+    @CachePut(key = "'doctorVerify_'+#id", value = "doctorVerifyCache")
     @Override
-    public void doctorVerifyCacheEvictReload(Integer id) {
+    public void doctorVerifyCacheReload(Integer id) {
         doctorVerifyService.getDoctorVerify(id);
     }
 }

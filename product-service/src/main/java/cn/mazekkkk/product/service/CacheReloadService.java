@@ -16,13 +16,13 @@ public interface CacheReloadService {
      * @param id
      * @return
      */
-    TblDoctorVerify doctorVerifyCacheReload(Integer id);
+    TblDoctorVerify doctorVerifyCache(Integer id);
 
     /**
      * 医师认证信息清空重载
      *
      * @param id
      */
-    void doctorVerifyCacheEvictReload(Integer id);
+    void doctorVerifyCacheReload(Integer id);
 
 }
