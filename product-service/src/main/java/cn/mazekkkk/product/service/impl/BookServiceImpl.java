@@ -34,9 +34,14 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findOne("1001");
     }
 
+    /**
+     * 匹配所有图书 分页查询
+     *
+     * @return
+     */
     @Override
     public Page<Book> bookMatchAll() {
-        Pageable pageable = new PageRequest(0,20);
+        Pageable pageable = new PageRequest(0, 20);
         return bookRepository.findAll(pageable);
     }
 }
