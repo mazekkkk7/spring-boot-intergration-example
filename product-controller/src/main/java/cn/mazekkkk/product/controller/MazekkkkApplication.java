@@ -11,13 +11,13 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @EnableAutoConfiguration
 @EnableJms
-@ComponentScan(basePackages = { "cn.mazekkkk.product" })
+@ComponentScan(basePackages = {"cn.mazekkkk.product"})
 public class MazekkkkApplication {
 
-	public static void main(String[] args) {
-		SpringApplication app = new SpringApplication(MazekkkkApplication.class);
-		app.run(args);
-	}
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(MazekkkkApplication.class);
+        app.run(args);
+    }
 
 
 }

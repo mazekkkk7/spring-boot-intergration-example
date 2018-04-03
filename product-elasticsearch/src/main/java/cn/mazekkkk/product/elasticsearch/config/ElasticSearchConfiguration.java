@@ -6,7 +6,9 @@ import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.transport.TransportAddress;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 import java.net.InetSocketAddress;
 
@@ -17,7 +19,7 @@ import java.net.InetSocketAddress;
  * @createTime 18/3/30
  */
 @Configuration
-@EnableJpaRepositories(basePackages = "cn.mazekkkk.product.elasticsearch.repository")
+@EnableElasticsearchRepositories(basePackages = {"cn.mazekkkk.product.elasticsearch.repository"})
 public class ElasticSearchConfiguration {
 
     /**
@@ -25,7 +27,7 @@ public class ElasticSearchConfiguration {
      * @return
      */
     @Bean
-    public TransportClient getTransPortClient(ElasticSearchConfiguration elasticSearchConfiguration){
+    public TransportClient getTransPortClient(){
         Settings settings = Settings.settingsBuilder().put("client.transport.ignore_cluster_name", "true").build();
         TransportClient transportClient = TransportClient.builder().settings(settings).build();
 
@@ -33,6 +35,11 @@ public class ElasticSearchConfiguration {
         transportAddress.getAddress();
         transportClient.addTransportAddress(transportAddress);
         return transportClient;
+    }
+
+    @Bean
+    public ElasticsearchOperations elasticsearchTemplate() throws Exception {
+        return new ElasticsearchTemplate(this.getTransPortClient());
     }
 
 

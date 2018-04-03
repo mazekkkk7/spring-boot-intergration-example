@@ -2,14 +2,17 @@ package cn.mazekkkk.product.controller;
 
 import cn.mazekkkk.product.dao.common.Gametrade;
 import cn.mazekkkk.product.dao.common.TblDoctorVerify;
+import cn.mazekkkk.product.elasticsearch.entity.Book;
 import cn.mazekkkk.product.redis.service.IRedisService;
 import cn.mazekkkk.product.scheduler.ScheduleTaskService;
+import cn.mazekkkk.product.service.BookService;
 import cn.mazekkkk.product.service.CacheReloadService;
 import cn.mazekkkk.product.service.DoctorVerifyService;
 import cn.mazekkkk.product.service.GameTradeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,8 +39,8 @@ public class HelloController {
     private DoctorVerifyService doctorVerifyServiceImpl;
     @Autowired
     private CacheReloadService cacheReloadServiceImpl;
-//    @Autowired
-//    private BookService bookService;
+    @Autowired
+    private BookService bookService;
 
     public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -142,10 +145,18 @@ public class HelloController {
         cacheReloadServiceImpl.doctorVerifyCacheReload(tblDoctorVerify.getId());
     }
 
-//    @RequestMapping(value = "/book/match", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-//    @ResponseBody
-//    public Object matchBookAll() {
-//        return bookService.bookMatchAll(1,20);
-//    }
+    @RequestMapping(value = "/book/match", method = RequestMethod.GET)
+    @ResponseBody
+    public Object matchBookOne() {
+        Book book = bookService.bookMatchOne();
+        return book;
+    }
+
+    @RequestMapping(value = "/book/matchAll", method = RequestMethod.GET)
+    @ResponseBody
+    public Object matchBookAll() {
+        Page<Book> bookPage = bookService.bookMatchAll();
+        return bookPage.getContent();
+    }
 
 }

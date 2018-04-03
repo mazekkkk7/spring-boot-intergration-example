@@ -1,10 +1,10 @@
 package cn.mazekkkk.product.elasticsearch.entity;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * 书实体
@@ -12,9 +12,11 @@ import java.math.BigDecimal;
  * @author maze
  * @createTime 18/3/30
  */
-@Document(indexName = "libary",type = "book")
+@Document(indexName = "library",type = "book")
 @Data
 public class Book implements Serializable {
+    @Id
+    private String _id;
     /**
      * 书名
      */
@@ -22,5 +24,5 @@ public class Book implements Serializable {
     /**
      * 书单价
      */
-    private BigDecimal price;
+    private Double price;
 }

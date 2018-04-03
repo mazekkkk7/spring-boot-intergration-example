@@ -1,11 +1,10 @@
 package cn.mazekkkk.product.elasticsearch.repository;
 
+import cn.mazekkkk.product.elasticsearch.entity.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.CrudRepository;
-
-import java.io.Serializable;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 /**
  * 分页和排序仓储对象
@@ -13,7 +12,7 @@ import java.io.Serializable;
  * @author maze
  * @createTime 18/3/30
  */
-public interface BookRepository<Book, ID extends Serializable> extends CrudRepository<Book, ID> {
+public interface BookRepository extends ElasticsearchRepository<Book,String> {
 
     /**
      * 查询所有并排序
@@ -21,6 +20,7 @@ public interface BookRepository<Book, ID extends Serializable> extends CrudRepos
      * @param sort 排序条件
      * @return
      */
+    @Override
     Iterable<Book> findAll(Sort sort);
 
     /**
@@ -29,6 +29,7 @@ public interface BookRepository<Book, ID extends Serializable> extends CrudRepos
      * @param pageable 分页对象
      * @return
      */
+    @Override
     Page<Book> findAll(Pageable pageable);
 
 }
