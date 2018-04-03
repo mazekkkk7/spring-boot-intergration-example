@@ -31,6 +31,7 @@ public class BookServiceImpl implements BookService {
      */
     @Override
     public Book bookMatchOne() {
+
         return bookRepository.findOne("1001");
     }
 
@@ -44,4 +45,17 @@ public class BookServiceImpl implements BookService {
         Pageable pageable = new PageRequest(0, 20);
         return bookRepository.findAll(pageable);
     }
+
+    /**
+     * 远程执行脚本 TODO
+     */
+    public void scriptRun() {
+//        SearchTemplateRequestBuilder request = new SearchTemplateRequestBuilder(client)
+//                .setScript(AnnScript.name(0))
+//                .setScriptType(ScriptService.ScriptType.FILE)
+//                .setScriptParams(params)
+//                .setRequest(new org.elasticsearch.action.search.SearchRequest(index()).types(type));
+//        SearchResponse response = request.get().getResponse();
+    }
+
 }
