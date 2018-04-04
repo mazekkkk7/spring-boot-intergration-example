@@ -10,6 +10,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
 
+    /**
+     * 配置访问白名单
+     * @param http HttpSecurity 对象
+     * @throws Exception
+     */
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/api/**").authorizeRequests().anyRequest().authenticated();

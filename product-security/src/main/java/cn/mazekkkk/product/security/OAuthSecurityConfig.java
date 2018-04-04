@@ -21,6 +21,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 @EnableResourceServer
 public class OAuthSecurityConfig extends AuthorizationServerConfigurerAdapter {
 
+    @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -40,7 +41,7 @@ public class OAuthSecurityConfig extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore());//.userDetailsService(customUserDetailsService);
+        endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore());
     }
 
     @Bean
