@@ -10,4 +10,5 @@
 8、集成spring-cache使用redis作为缓存容器在方法上使用@Cache方法将结果缓存至redis中再次请求直接从redis获取数据，  
 需要结合@CachePut(重写缓存)@CacheEvit清除缓存配合使用(注意如果在缓存的实体中存在List、ArrayList属性的话那么最好转为  
 String[]数组的对象因为List本身有实现Serializable接口会将多层的List转为ArrayList$subList导致序列化成功却无法反序列化)  
-9、集成spring-data-elasticsearch 本地使用elasticsearch 2.4.6
+9、集成spring-data-elasticsearch 本地使用elasticsearch 2.4.6  
+10、如果使用idea开发工程 建议安装插件 阿里规约 安装及使用教程请自行google
