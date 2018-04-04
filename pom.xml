@@ -10,7 +10,7 @@
 		<module>product-dao</module>
 		<module>product-scheduler</module>
 		<module>product-service</module>
-		<module>product-controller</module>
+		<module>product-application</module>
 		<module>product-common</module>
 		<module>product-activemq</module>
 		<module>product-plugin</module>
