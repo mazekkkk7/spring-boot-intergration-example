@@ -18,8 +18,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class MazekkkkApplication {
 
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(MazekkkkApplication.class);
-        app.run(args);
+        SpringApplication.run(MazekkkkApplication.class,args);
     }
 
 
