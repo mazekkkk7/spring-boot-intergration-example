@@ -19,7 +19,6 @@ public class MyBatisRedisCache implements Cache {
     private static IRedisService redisService;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
-    private Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss" ).create();
     private String id;
 
     public MyBatisRedisCache(final String id) {
