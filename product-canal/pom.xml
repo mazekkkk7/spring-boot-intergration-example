@@ -23,8 +23,8 @@
                     <artifactId>spring</artifactId>
                 </exclusion>
                 <exclusion>
-                    <groupId>com.alibaba.otter</groupId>
-                    <artifactId>canal.common</artifactId>
+                    <groupId>org.apache.zookeeper</groupId>
+                    <artifactId>zookeeper</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -39,5 +39,4 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
 </project>
